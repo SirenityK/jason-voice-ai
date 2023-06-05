@@ -14,6 +14,7 @@ print('Starting...')
 
 class Jason:
     def __init__(self) -> None:
+        openai.api_key = 'Insert key here'
         self.engine = pyttsx3.init()
         # self.engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_ES-MX_SABINA_11.0')
         self.prompt = self.get_prompt()
@@ -51,7 +52,6 @@ class Jason:
         
         self.prompt[-1]['content'] = self.prompt[-1]['content'].replace('!USER', rec_face).replace('!MESSAGE', user_message)
         
-        openai.api_key = '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'
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
             messages=self.prompt
