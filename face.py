@@ -8,7 +8,7 @@ class Recognition:
     def __init__(self) -> None:
         self.camera = cv2.VideoCapture(0)
         self.image_files = os.listdir('images')
-        self.names = [re.sub('(.)?(jpg|png)', '', i).capitalize() for i in self.image_files]
+        self.names = [re.sub('(.)?(jpg|png)', '', i).title() for i in self.image_files]
 
     def save_encodings(self):
         known_images = [fr.load_image_file(os.path.join('images', i)) for i in self.image_files]
